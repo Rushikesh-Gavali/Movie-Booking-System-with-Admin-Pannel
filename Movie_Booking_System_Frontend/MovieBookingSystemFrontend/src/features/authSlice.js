@@ -1,14 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { login, register } from '../services/auth';
 
-// Initial state, including checking local storage for an existing token
 const initialState = {
   token: localStorage.getItem('token') || null,
   status: 'idle',
   error: null,
 };
 
-// Async thunk for logging in a user
 export const loginUser = createAsyncThunk('auth/loginUser', async (userData, { rejectWithValue }) => {
   try {
     const response = await login(userData);
@@ -18,7 +16,6 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData, { r
   }
 });
 
-// Async thunk for registering a user
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData, { rejectWithValue }) => {
   try {
     const response = await register(userData);
@@ -28,7 +25,6 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
   }
 });
 
-// Auth slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,

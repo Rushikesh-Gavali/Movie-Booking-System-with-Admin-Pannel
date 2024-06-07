@@ -23,7 +23,6 @@ exports.addMovie = async (req, res, next) => {
 
         await newMovie.save();
 
-        // Update the screens to include this movie
         if (screens && screens.length > 0) {
             await Screen.updateMany(
                 { _id: { $in: screens } },

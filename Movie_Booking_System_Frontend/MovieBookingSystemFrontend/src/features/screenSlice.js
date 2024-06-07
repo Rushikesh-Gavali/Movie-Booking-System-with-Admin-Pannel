@@ -54,4 +54,3 @@ const screenSlice = createSlice({
 });
 
 export default screenSlice.reducer;
-//------------new---------

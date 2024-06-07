@@ -18,12 +18,11 @@ exports.addScreen = async (req, res, next) => {
             name,
             capacity,
             seats,
-            movies, // Set movies
+            movies,
         });
 
         await newScreen.save();
 
-        // Update the movies to include this screen
         if (movies && movies.length > 0) {
             await Movie.updateMany(
                 { _id: { $in: movies } },

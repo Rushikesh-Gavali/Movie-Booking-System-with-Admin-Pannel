@@ -12,7 +12,6 @@ const Register = () => {
   const navigate = useNavigate();
   const { token, status, error } = useSelector((state) => state.auth);
 
-  // Define the validation schema
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required('Name is required')

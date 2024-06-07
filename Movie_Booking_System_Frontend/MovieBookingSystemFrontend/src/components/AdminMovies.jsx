@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMovie } from '../features/movies/movieSlice';
-import { fetchScreens } from '../features/screenSlice'; // Import fetchScreens action
+import { fetchScreens } from '../features/screenSlice';
 
 const AdminMovies = () => {
   const dispatch = useDispatch();
@@ -17,13 +17,13 @@ const AdminMovies = () => {
   const [selectedScreen, setSelectedScreen] = useState('');
 
   useEffect(() => {
-    dispatch(fetchScreens()); // Dispatch fetchScreens action when component mounts
+    dispatch(fetchScreens());
   }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addMovie({ title, genre, description, poster, showtimes: [showtimes], screens: [selectedScreen] }));
-    // Optionally clear the form
+
     setTitle('');
     setGenre('');
     setDescription('');

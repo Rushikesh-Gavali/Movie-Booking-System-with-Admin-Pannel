@@ -5,7 +5,7 @@ exports.lockSeats = async (screenId, seats) => {
 
     for (let seat of seats) {
         if (screen.seats.get(seat)) {
-            return false; // Seat is already booked
+            return false;
         }
     }
 

@@ -7,13 +7,12 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-// Function to create an order
 exports.createOrder = async (amount, currency = 'INR') => {
     const options = {
-        amount: amount * 100, // Razorpay amount should be in paisa
+        amount: amount * 100,
         currency,
         receipt: `receipt_${Math.floor(Math.random() * 1000000)}`,
-        payment_capture: 1, // Auto capture
+        payment_capture: 1,
     };
 
     try {
@@ -25,7 +24,6 @@ exports.createOrder = async (amount, currency = 'INR') => {
     }
 };
 
-// Function to verify payment signature
 exports.verifyPayment = (paymentDetails) => {
     const { order_id, payment_id, signature } = paymentDetails;
     const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET);

@@ -17,23 +17,19 @@ const AdminScreens = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Create seats object with default values set to false
     const seatsObject = seats.reduce((acc, seat) => {
       return { ...acc, [seat]: false };
     }, {});
 
-    // Create a new screen object with the required fields
     const newScreen = {
       name,
       capacity,
-      seats: seatsObject, // Set seats as the seatsObject
+      seats: seatsObject,
       movies,
     };
 
-    // Dispatch the addScreen action with the new screen object
     dispatch(addScreen(newScreen));
 
-    // Optionally clear the form fields after submission
     setName('');
     setCapacity('');
     setSeats([]);
@@ -53,12 +49,10 @@ const AdminScreens = () => {
           <label className="block text-gray-700">Capacity</label>
           <input type="number" value={capacity} onChange={(e) => setCapacity(e.target.value)} className="border rounded w-full py-2 px-3" />
         </div>
-        {/* Seats input field */}
         <div className="mb-4">
           <label className="block text-gray-700">Seats</label>
           <input type="text" placeholder='eg. A1,A2,B1,B2 etc' value={seats} onChange={(e) => setSeats(e.target.value.split(','))} className="border rounded w-full py-2 px-3" />
         </div>
-        {/* Movies input field */}
         <div className="mb-4">
           <label className="block text-gray-700">Movies</label>
           <input type="text" value={movies} onChange={(e) => setMovies(e.target.value)} className="border rounded w-full py-2 px-3" />

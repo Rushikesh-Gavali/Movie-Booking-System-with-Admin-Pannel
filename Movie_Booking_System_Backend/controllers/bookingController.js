@@ -32,7 +32,6 @@ exports.bookTickets = async (req, res, next) => {
         await booking.save();
         await sendEmail(req.user.email, booking);
 
-        // Populate the screen field to include screen details
         const populatedBooking = await Booking.findById(booking._id).populate('screen');
 
         res.status(200).json({ success: true, data: populatedBooking });
